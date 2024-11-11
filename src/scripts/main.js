@@ -8,8 +8,8 @@ const items = [...list.children];
 function sortList(elements) {
   [...elements]
     .sort((a, b) => {
-      const salaryA = formatedSalary(a.getAttribute('data-salary'));
-      const salaryB = formatedSalary(b.getAttribute('data-salary'));
+      const salaryA = formattedSalary(a.getAttribute('data-salary'));
+      const salaryB = formattedSalary(b.getAttribute('data-salary'));
 
       return salaryB - salaryA;
     })
@@ -18,7 +18,7 @@ function sortList(elements) {
     });
 }
 
-function formatedSalary(salary) {
+function formattedSalary(salary) {
   return Number(salary.replace(/,/g, '.').replace(/[$]/g, ''));
 }
 
@@ -26,7 +26,7 @@ function getEmployees(elements) {
   return elements.map((person) => ({
     name: person.textContent.trim(),
     position: person.getAttribute('data-position'),
-    salary: `$` + formatedSalary(person.getAttribute('data-salary')).toFixed(3),
+    salary: `$` + formattedSalary(person.getAttribute('data-salary')).toFixed(3),
     age: Number(person.getAttribute('data-age')),
   }));
 }
